@@ -1656,7 +1656,7 @@ button:focus-visible {
 }
 
 .included-list {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .included-list li {
@@ -1884,6 +1884,11 @@ button:focus-visible {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+/* The "And" / "Or" row sits as an extra dt before the cocktails one */
+.formats-grid dt:has(+ dt) {
+  color: var(--gold);
 }
 
 .formats-grid dd {
