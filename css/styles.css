@@ -1622,6 +1622,7 @@ button:focus-visible {
 
 .included,
 .formats,
+.formats-classic,
 .cocktails,
 .steps {
   padding: 84px 6%;
@@ -1630,6 +1631,7 @@ button:focus-visible {
 
 .included h2,
 .formats h2,
+.formats-classic h2,
 .cocktails h2,
 .steps h2 {
   display: inline-block;
@@ -1687,7 +1689,136 @@ button:focus-visible {
 }
 
 .formats {
-  background: var(--form);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 3fr);
+  gap: 32px 48px;
+  align-items: center;
+  background: var(--green);
+  color: var(--ink);
+}
+
+.formats h2 {
+  color: var(--banana);
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.02;
+  text-align: left;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tier {
+  position: relative;
+  padding: 40px 26px 48px;
+  background: #f1e9d8;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.tier.is-popular {
+  z-index: 1;
+  padding-block: 64px 72px;
+  background: #f4ecdc;
+}
+
+.tier h3 {
+  margin: 0 0 28px;
+  color: var(--green);
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.tier dl {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+}
+
+.tier dt {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tier dd {
+  margin: 4px 0 0;
+  font-family: var(--sans);
+  font-size: 15px;
+}
+
+.tier dd small {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.tier-join {
+  margin: -6px 12% -8px;
+  padding: 2px 0;
+  border-block: 1px solid var(--green);
+  color: var(--green);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tier-ribbon {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 116px;
+  padding: 8px 0 6px;
+  background: var(--ink);
+  color: var(--banana);
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 92% 50%, 100% 100%, 0 100%, 8% 50%);
+  transform: translateX(-50%);
+}
+
+.tier-tag {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  padding: 10px 6px;
+  background: var(--green);
+  color: #f1e9d8;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.tier-right .tier-tag {
+  right: 0;
+  left: auto;
+  transform: translateY(-50%);
+}
+
+.formats .more {
+  grid-column: 2;
+  justify-self: center;
+  color: var(--banana);
 }
 
 .formats-kicker,
@@ -1695,6 +1826,29 @@ button:focus-visible {
   margin: 14px 0 0;
   color: var(--gold-deep);
   font-style: italic;
+}
+
+.formats-grid h3,
+.cocktail-grid h3,
+.steps-list h3 {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.cocktail-grid p,
+.steps-list p {
+  margin: 0;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* Formats, previous layout (kept for comparison) */
+
+.formats-classic {
+  background: var(--form);
 }
 
 .formats-grid {
@@ -1718,20 +1872,22 @@ button:focus-visible {
   border-color: var(--gold);
 }
 
-.formats-grid h3,
-.cocktail-grid h3,
-.steps-list h3 {
-  margin: 0 0 10px;
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-style: italic;
-  font-weight: 500;
+.formats-grid dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
 }
 
-.formats-grid p,
-.cocktail-grid p,
-.steps-list p {
-  margin: 0;
+.formats-grid dt {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.formats-grid dd {
+  margin: 4px 0 0;
   font-size: 15px;
   font-style: italic;
 }
@@ -1825,6 +1981,30 @@ button:focus-visible {
   .cocktail-grid,
   .steps-list {
     grid-template-columns: 1fr;
+  }
+
+  .formats {
+    grid-template-columns: 1fr;
+  }
+
+  .formats h2 {
+    text-align: center;
+  }
+
+  .tiers {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 440px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .tier.is-popular {
+    padding-block: 48px;
+  }
+
+  .formats .more {
+    grid-column: auto;
   }
 
   .hero-copy {
