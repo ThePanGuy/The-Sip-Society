@@ -1661,8 +1661,11 @@ button:focus-visible {
 
 .included-list li {
   display: grid;
+  grid-template-rows: 38px auto auto;
+  align-content: start;
   gap: 8px;
   justify-items: center;
+  text-align: center;
 }
 
 .included-list svg {
@@ -1980,6 +1983,10 @@ button:focus-visible {
 @media (max-width: 860px) {
   .included-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .included-list li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .formats-grid,
